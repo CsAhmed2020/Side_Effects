@@ -21,8 +21,10 @@ fun RememberUpdatedStateDemo(
 
     // Create an effect that matches the lifecycle of RememberUpdatedStateDemo.
     // If RememberUpdatedStateDemo recomposes, the delay shouldn't start again.
-    //if a state variable is updated,
-    //the side effect will not get the latest state variable change.
+    //When a side effect has been launched,
+    // during the execution, if a state variable is updated,
+    // the side effect will not get the latest state variable change.
+    //To ensure, LaunchedEffect continue to get the latest value, we can use rememberUpdatedState.
     LaunchedEffect(key1 = true){
         delay(3000L)
         //onTimeOut() if i use it , it will launch only with first fun exec and ignore any re-execute of this onTimeOut fun.
